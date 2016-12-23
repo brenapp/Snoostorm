@@ -1,0 +1,61 @@
+{
+  "name": "snoostorm",
+  "version": "0.0.3",
+  "description": "A streaming client for reddit, based off of snoowrap",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MayorMonty/Snoostorm.git"
+  },
+  "keywords": [
+    "reddit",
+    "api",
+    "oauth",
+    "script",
+    "web",
+    "client",
+    "wrapper",
+    "snoowrap"
+  ],
+  "author": {
+    "name": "Brendan McGuire",
+    "url": "artificalchamber@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MayorMonty/Snoostorm/issues"
+  },
+  "dependencies": {
+    "snoowrap": "^1.11.3"
+  },
+  "homepage": "https://github.com/MayorMonty/Snoostorm#readme",
+  "gitHead": "41678a09ffd1feab0953ef6be7bcafca29791959",
+  "_id": "snoostorm@0.0.3",
+  "_shasum": "bc7cb3e386b2dac813e2d82df39feed3daac79a2",
+  "_from": "snoostorm@>=0.0.3 <0.0.4",
+  "_npmVersion": "2.15.1",
+  "_nodeVersion": "6.2.2",
+  "_npmUser": {
+    "name": "mayormonty",
+    "email": "artificalchamber@gmail.com"
+  },
+  "dist": {
+    "shasum": "bc7cb3e386b2dac813e2d82df39feed3daac79a2",
+    "tarball": "https://registry.npmjs.org/snoostorm/-/snoostorm-0.0.3.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "mayormonty",
+      "email": "artificalchamber@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/snoostorm-0.0.3.tgz_1482210935592_0.6064679615665227"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/snoostorm/-/snoostorm-0.0.3.tgz"
+}
