@@ -11,7 +11,7 @@ Basic Usage:
 var snoostorm = require("snoostorm"),
     credentials  = require("./credentials") // Load snoowrap credentials from a file
 
-var client = new snoostorm(client);
+var client = new snoostorm(new snoowrap(credentials));
 
 var commentStream = client.CommentStream({
   "subreddit": "AskReddit", // optional, defaults to "all",
