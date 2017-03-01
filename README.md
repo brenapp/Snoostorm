@@ -31,4 +31,9 @@ var submissionStream = client.SubmissionStream({
 submissionStream.on("submission", function(post) {
   console.log(`New submission by ${post.author.name}`);
 });
+
+setTimeout(function() {
+    submissionStream.emit("stop"); // Stop recieving new events
+}, 1000);
+
 ```
