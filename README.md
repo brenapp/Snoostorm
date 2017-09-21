@@ -1,7 +1,7 @@
 SnooStorm
 ===
 
-**HELP WANTED: ** Testing Suite. Get in touch!
+**HELP WANTED:** Testing Suite. Get in touch!
 
 
 An event based wrapper around snoowrap
