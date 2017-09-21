@@ -87,7 +87,9 @@ const SnooStorm = (function() {
             event.emit("submission", post);
           })
           lastBatch = listing
-        });
+        }).catch(function(error) {
+            event.emit("error", error);
+        };
       }, options.pollTime);
 
       event.on("stop", function() {
