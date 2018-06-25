@@ -89,7 +89,7 @@ const SnooStorm = (function() {
           lastBatch = listing
         }).catch(function(error) {
             event.emit("error", error);
-        };
+        });
       }, options.pollTime);
 
       event.on("stop", function() {
