@@ -100,11 +100,32 @@ const SnooStorm = (function() {
 
     }
 
+    InboxStream(options) {
+      options = parseOptions(options);
+
+      let lastBatch = [],
+          event     = new EventEmitter(),
+          start     = Date.now();
+
+      let client = this.client
+
+      let id = setInterval(function() {
+        client.getUnreadMessages().forEach(function(post) {
+          event.emit("PrivateMessage", post);
+        })
+        .catch(function(error) {
+            event.emit("error", error);
+        });
+      }, options.pollTime);
+
+      event.on("stop", function() {
+        clearInterval(id)
+      })
+      return event
+
+    }
+
   };
 })();
-
-
-
-
 
 module.exports = SnooStorm;
