@@ -1,7 +1,7 @@
 SnooStorm
 ===
 
-**HELP WANTED:** Testing Suite. Get in touch!
+Recently added InboxStream that gets unread messages
 
 
 An event based wrapper around snoowrap
