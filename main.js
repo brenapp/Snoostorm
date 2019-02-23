@@ -27,6 +27,7 @@ const SnooStorm = (function() {
     options.subreddit = options.subreddit || "all";
     options.results = options.results  || 5;
     options.pollTime = options.pollTime || 2000
+    options.filter = options.filter || "unread"; // inbox, unread, messages, comments, selfreply, or mentions 
     return options
   }
 
@@ -110,7 +111,9 @@ const SnooStorm = (function() {
       let client = this.client
 
       let id = setInterval(function() {
-        client.getUnreadMessages().then(function(listing) {
+        client.getInbox({
+          filter: options.filter,
+        }).then(function(listing) {
           removeDuplicates(lastBatch, listing, start).forEach(function(post) {
           event.emit("PrivateMessage", post);
         })
