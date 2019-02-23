@@ -110,10 +110,12 @@ const SnooStorm = (function() {
       let client = this.client
 
       let id = setInterval(function() {
-        client.getUnreadMessages().forEach(function(post) {
+        client.getUnreadMessages().then(function(listing) {
+          removeDuplicates(lastBatch, listing, start).forEach(function(post) {
           event.emit("PrivateMessage", post);
         })
-        .catch(function(error) {
+        lastBatch = listing
+        }).catch(function(error) {
             event.emit("error", error);
         });
       }, options.pollTime);
@@ -121,8 +123,8 @@ const SnooStorm = (function() {
       event.on("stop", function() {
         clearInterval(id)
       })
+      
       return event
-
     }
 
   };
