@@ -1,7 +1,7 @@
 SnooStorm
 ===
 
-Recently added InboxStream that gets unread messages
+Recently added InboxStream that gets messages from a user's Inbox
 
 
 An event based wrapper around snoowrap
@@ -38,5 +38,14 @@ submissionStream.on("submission", function(post) {
 setTimeout(function() {
     submissionStream.emit("stop"); // Stop recieving new events
 }, 1000);
+
+var inboxStream = client.InboxStream({
+  "filter": "unread",       // inbox, unread (default), messages, comments, selfreply, or mentions
+  "pollTime": 15000
+});
+
+inboxStream.on("PrivateMessage", function(pm) {
+  console.log(`New PM from ${pm.author.name}`);
+});
 
 ```
