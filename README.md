@@ -1,51 +1,34 @@
-SnooStorm
-===
+# SnooStorm
 
-Recently added InboxStream that gets messages from a user's Inbox
+Event-based wrapper around [`snoowrap`](https://npm.im/snoowrap)
 
+JUST RELEASED: VERSION 1.0!
 
-An event based wrapper around snoowrap
+- TypeScript Rewrite
+- More sensible API
+- Better support for InboxStream
 
 ## Usage
 
 Basic Usage:
 
 ```javascript
-var snoostorm = require("snoostorm"),
-    credentials  = require("./credentials") // Load snoowrap credentials from a file
+import { InboxStream, CommentStream, SubmissionStream } from "./src/main";
+import Snoowrap from "snoowrap";
 
-var client = new snoostorm(new snoowrap(credentials));
+const creds = require("./credentials.json");
 
-var commentStream = client.CommentStream({
-  "subreddit": "AskReddit", // optional, defaults to "all",
-  "results": 5,              // The number of results to request per request, more the larger the subreddit, about how many results you should get in 2 seconds. Defaults to 5
-  "pollTime": 2000           // Time in between polls in milliseconds, defaults to 2000, 30 times a minute, in accordance with Reddit's 60req/min, allowing you to perform both comment and submission updates. Note that snoowrap will automatically wait to be in compliance with Reddit's Guidelines
-})
+const client = new Snoowrap(creds);
 
-commentStream.on("comment", function(comment) {
-  console.log(`New comment by ${comment.author.name}`);
-});
+const comments = new CommentStream(client);
+comments.on("item", console.log);
 
-var submissionStream = client.SubmissionStream({
-  "subreddit": "AskReddit", // optional, defaults to "all",
-  "results": 5              // The number of results to request per request, more the larger the subreddit, about how many results you should get in 2 seconds. Defaults to 5
-})
+const submissions = new SubmissionStream(client);
+submissions.on("item", console.log);
 
-submissionStream.on("submission", function(post) {
-  console.log(`New submission by ${post.author.name}`);
-});
+const inbox = new InboxStream(client);
+inbox.on("item", console.log);
 
-setTimeout(function() {
-    submissionStream.emit("stop"); // Stop recieving new events
-}, 1000);
-
-var inboxStream = client.InboxStream({
-  "filter": "unread",       // inbox, unread (default), messages, comments, selfreply, or mentions
-  "pollTime": 15000
-});
-
-inboxStream.on("PrivateMessage", function(pm) {
-  console.log(`New PM from ${pm.author.name}`);
-});
-
+inbox.end();
+inbox.on("end", () => console.log("And now my watch has ended"));
 ```
