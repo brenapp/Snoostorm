@@ -1,6 +1,6 @@
 {
   "name": "snoostorm",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "A streaming client for reddit, based off of snoowrap",
   "main": "main.js",
   "scripts": {
