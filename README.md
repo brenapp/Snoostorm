@@ -13,7 +13,7 @@ JUST RELEASED: VERSION 1.0!
 Basic Usage:
 
 ```javascript
-import { InboxStream, CommentStream, SubmissionStream } from "./src/main";
+import { InboxStream, CommentStream, SubmissionStream } from "snoostorm";
 import Snoowrap from "snoowrap";
 
 const creds = require("./credentials.json");
