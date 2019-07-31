@@ -17,7 +17,7 @@ export class CommentStream extends Poll<Snoowrap.Comment> {
   constructor(client: Snoowrap, options: SnooStormOptions = DefaultOptions) {
     super({
       frequency: options.pollTime || 2000,
-      get: async () => await client.getNewComments(options.subreddit, options),
+      get: async () => client.getNewComments(options.subreddit, options),
       filter: (item, i, inventory) => inventory.every(it => it.id !== item.id)
     });
   }
@@ -27,7 +27,7 @@ export class SubmissionStream extends Poll<Snoowrap.Submission> {
   constructor(client: Snoowrap, options: SnooStormOptions = DefaultOptions) {
     super({
       frequency: options.pollTime || 2000,
-      get: async () => await client.getNew(options.subreddit, options),
+      get: async () => client.getNew(options.subreddit, options),
       filter: (item, i, inventory) => inventory.every(it => it.id !== item.id)
     });
   }
@@ -54,8 +54,19 @@ export class InboxStream extends Poll<
   ) {
     super({
       frequency: options.pollTime,
-      get: async () => await client.getInbox(options),
+      get: async () => client.getInbox(options),
       filter: (item, i, inventory) => inventory.every(it => it.id !== item.id)
+    });
+  }
+}
+
+export class ModMailStream extends Poll<Snoowrap.PrivateMessage> {
+  constructor(client: Snoowrap, options: SnooStormOptions = DefaultOptions) {
+    super({
+      frequency: options.pollTime || 2000,
+      get: async () => client.getModmail(options),
+      filter: (item, index, inventory) =>
+        inventory.every(it => it.id !== item.id)
     });
   }
 }
