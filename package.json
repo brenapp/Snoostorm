@@ -5,7 +5,9 @@
   "main": "out/main.js",
   "typings": "out/main.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -32,7 +34,8 @@
   "dependencies": {
     "@types/node": "^11.9.5",
     "@types/snoowrap": "^1.15.3",
-    "snoowrap": "^1.11.3"
+    "snoowrap": "^1.11.3",
+    "snyk": "^1.189.0"
   },
   "homepage": "https://github.com/MayorMonty/Snoostorm#readme",
   "gitHead": "41678a09ffd1feab0953ef6be7bcafca29791959",
@@ -60,5 +63,6 @@
     "tmp": "tmp/snoostorm-0.0.3.tgz_1482210935592_0.6064679615665227"
   },
   "directories": {},
-  "_resolved": "https://registry.npmjs.org/snoostorm/-/snoostorm-0.0.3.tgz"
+  "_resolved": "https://registry.npmjs.org/snoostorm/-/snoostorm-0.0.3.tgz",
+  "snyk": true
 }
