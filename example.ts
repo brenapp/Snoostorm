@@ -3,13 +3,10 @@ import Snoowrap from "snoowrap";
 
 const creds = require("./credentials.json");
 
-const client = new Snoowrap(creds);
+console.log(creds);
 
-const comments = new CommentStream(client);
-comments.on("item", console.log);
+const r = new Snoowrap(creds);
 
-const submissions = new SubmissionStream(client);
-submissions.on("item", console.log);
+const stream = new CommentStream(r, { subreddit: "all", limit: 25 });
 
-const inbox = new InboxStream(client);
-inbox.on("item", console.log);
+stream.on("item", console.log);
