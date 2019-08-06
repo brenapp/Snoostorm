@@ -34,7 +34,7 @@
   "dependencies": {
     "@types/node": "^11.9.5",
     "@types/snoowrap": "^1.15.3",
-    "snoowrap": "^1.11.3",
+    "snoowrap": "^1.19.0",
     "snyk": "^1.189.0"
   },
   "homepage": "https://github.com/MayorMonty/Snoostorm#readme",
