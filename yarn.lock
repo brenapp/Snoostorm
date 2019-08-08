@@ -201,7 +201,7 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-bluebird@^3.4.1, bluebird@^3.5.0:
+bluebird@^3.5.0, bluebird@^3.5.5:
   version "3.5.5"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.5.tgz#a8d0afd73251effbbd5fe384a77d73003c17a71f"
 
@@ -1017,9 +1017,10 @@ lodash@^4, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, l
   version "4.17.14"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.14.tgz#9ce487ae66c96254fe20b599f21b6816028078ba"
 
-lodash@^4.5.1:
+lodash@^4.17.15:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
 lowercase-keys@^1.0.0:
   version "1.0.1"
@@ -1520,12 +1521,13 @@ smart-buffer@4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.0.2.tgz#5207858c3815cc69110703c6b94e46c15634395d"
 
-snoowrap@^1.11.3:
-  version "1.18.0"
-  resolved "https://registry.yarnpkg.com/snoowrap/-/snoowrap-1.18.0.tgz#3a7be316505913c032ee2e8c2512310d4782a6cf"
+snoowrap@^1.19.0:
+  version "1.19.0"
+  resolved "https://registry.yarnpkg.com/snoowrap/-/snoowrap-1.19.0.tgz#6b24dd91ddb72ef15aba626109fd695d8c5e1ab0"
+  integrity sha512-T5ksseuepfNjZOmERB6p5/PNot45fDzez2GvIO320p7b2I4gl1Wjo+u6s7W2IyGzBJ5kHDXcWIlnJnEvdRvC2g==
   dependencies:
-    bluebird "^3.4.1"
-    lodash "^4.5.1"
+    bluebird "^3.5.5"
+    lodash "^4.17.15"
     promise-chains "^0.3.11"
     request "^2.87.0"
     request-promise "^4.2.2"
