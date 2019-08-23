@@ -1,12 +1,16 @@
-import { InboxStream, CommentStream, SubmissionStream } from "./src/main";
+import {
+  InboxStream,
+  CommentStream,
+  SubmissionStream,
+  ModMailStream
+} from "./src/main";
 import Snoowrap from "snoowrap";
 
 const creds = require("./credentials.json");
 
-console.log(creds);
-
+// Create snoowrap object
 const r = new Snoowrap(creds);
 
-const stream = new CommentStream(r, { subreddit: "all", limit: 25 });
-
-stream.on("item", console.log);
+// Modmail test
+const modmail = new ModMailStream(r, {});
+modmail.on("item", console.log);
