@@ -1,6 +1,6 @@
 import Poll from "./classes/Poll";
 import * as Snoowrap from "snoowrap";
-import { ListingOptions } from "snoowrap/dist/objects";
+import { ListingOptions, ModmailConversation } from "snoowrap/dist/objects";
 
 export interface SnooStormOptions extends ListingOptions {
   pollTime?: number;
@@ -60,11 +60,14 @@ export class InboxStream extends Poll<
   }
 }
 
-export class ModMailStream extends Poll<Snoowrap.PrivateMessage> {
-  constructor(client: Snoowrap, options: SnooStormOptions = DefaultOptions) {
+export class ModMailStream extends Poll<ModmailConversation> {
+  constructor(
+    client: Snoowrap,
+    options: SnooStormOptions & { entity?: string } = DefaultOptions
+  ) {
     super({
       frequency: options.pollTime || 2000,
-      get: async () => client.getModmail(options),
+      get: async () => client.getNewModmailConversations(options),
       filter: (item, index, inventory) =>
         inventory.every(it => it.id !== item.id)
     });
