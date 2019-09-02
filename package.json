@@ -1,6 +1,6 @@
 {
   "name": "snoostorm",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A streaming client for reddit, based off of snoowrap",
   "main": "out/main.js",
   "typings": "out/main.d.ts",
@@ -32,8 +32,8 @@
     "url": "https://github.com/MayorMonty/Snoostorm/issues"
   },
   "dependencies": {
-    "@types/node": "^11.9.5",
-    "@types/snoowrap": "^1.15.3",
+    "@types/node": "^12.7.3",
+    "@types/request": "^2.48.2",
     "snoowrap": "^1.19.0"
   },
   "devDependencies": {
