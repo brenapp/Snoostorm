@@ -45,11 +45,13 @@ export class InboxStream extends Poll<
         | "messages"
         | "comments"
         | "selfreply"
-        | "mentions ";
+        | "mentions";
       pollTime: number;
+      limit: number;
     } = {
       filter: "inbox",
-      pollTime: 2000
+      pollTime: 2000,
+      limit: 5
     }
   ) {
     super({
