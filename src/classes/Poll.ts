@@ -35,7 +35,7 @@ export default class Poll<Item> extends EventEmitter {
       const got = await filterAsync(await get(), (item, i) =>
         filter(item, i, that.inventory)
       );
-
+      that.emit("listing", got);
       got.forEach(item => that.emit("item", item));
 
       that.inventory.push(...got);
