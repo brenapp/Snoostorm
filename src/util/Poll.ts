@@ -21,21 +21,19 @@ export default interface Poll<T extends object> {
   ): this;
 }
 
+export interface PollConfiguration<T> {
+  frequency: number;
+  get: () => Awaitable<T[]>;
+  identifier: keyof T;
+}
+
 export default class Poll<T extends object> extends EventEmitter {
   frequency: number;
   interval: NodeJS.Timeout;
 
-  processed: Set<T[keyof T]> = new Set<T[keyof T]>();
+  processed: Set<T[keyof T]> = new Set();
 
-  constructor({
-    frequency,
-    get,
-    identifier,
-  }: {
-    frequency: number;
-    get: () => Awaitable<T[]>;
-    identifier: keyof T;
-  }) {
+  constructor({ frequency, get, identifier }: PollConfiguration<T>) {
     super();
     this.frequency = frequency;
 
