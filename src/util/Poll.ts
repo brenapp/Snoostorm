@@ -1,0 +1,49 @@
+import { EventEmitter } from "events";
+
+type Awaitable<T> = Promise<T> | T;
+
+/**
+ * Represents an Abstract Poll
+ */
+export default class Poll<T extends object> extends EventEmitter {
+  frequency: number;
+  interval: NodeJS.Timeout;
+
+  processed: Set<T[keyof T]> = new Set<T[keyof T]>();
+
+  constructor({
+    frequency,
+    get,
+    identifier,
+  }: {
+    frequency: number;
+    get: () => Awaitable<T[]>;
+    identifier: keyof T;
+  }) {
+    super();
+    this.frequency = frequency;
+
+    this.interval = setInterval(async () => {
+      const batch = await get();
+
+      const newItems: T[] = [];
+      for (const item of batch) {
+        const id = item[identifier];
+        if (this.processed.has(id)) continue;
+
+        // Emit for new items and add it to the list
+        newItems.push(item);
+        this.processed.add(id);
+        this.emit("item", item);
+      }
+
+      // Emit the new listing of all new items
+      this.emit("listing", newItems);
+    }, frequency);
+  }
+
+  end() {
+    clearInterval(this.interval);
+    this.emit("end");
+  }
+}

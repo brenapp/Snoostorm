@@ -1,4 +1,4 @@
-import Poll from "./classes/Poll";
+import Poll from "./util/Poll";
 import * as Snoowrap from "snoowrap";
 import { ListingOptions, ModmailConversation } from "snoowrap/dist/objects";
 
@@ -10,7 +10,7 @@ export interface SnooStormOptions extends ListingOptions {
 export const DefaultOptions: SnooStormOptions = {
   pollTime: 2000,
   limit: 5,
-  subreddit: "all"
+  subreddit: "all",
 };
 
 export class CommentStream extends Poll<Snoowrap.Comment> {
@@ -18,7 +18,7 @@ export class CommentStream extends Poll<Snoowrap.Comment> {
     super({
       frequency: options.pollTime || 2000,
       get: async () => client.getNewComments(options.subreddit, options),
-      filter: (item, i, inventory) => inventory.every(it => it.id !== item.id)
+      identifier: "id",
     });
   }
 }
@@ -28,7 +28,7 @@ export class SubmissionStream extends Poll<Snoowrap.Submission> {
     super({
       frequency: options.pollTime || 2000,
       get: async () => client.getNew(options.subreddit, options),
-      filter: (item, i, inventory) => inventory.every(it => it.id !== item.id)
+      identifier: "id",
     });
   }
 }
@@ -51,13 +51,13 @@ export class InboxStream extends Poll<
     } = {
       filter: "inbox",
       pollTime: 2000,
-      limit: 5
+      limit: 5,
     }
   ) {
     super({
       frequency: options.pollTime,
       get: async () => client.getInbox(options),
-      filter: (item, i, inventory) => inventory.every(it => it.id !== item.id)
+      identifier: "id",
     });
   }
 }
@@ -70,8 +70,9 @@ export class ModMailStream extends Poll<ModmailConversation> {
     super({
       frequency: options.pollTime || 2000,
       get: async () => client.getNewModmailConversations(options),
-      filter: (item, index, inventory) =>
-        inventory.every(it => it.id !== item.id)
+      identifier: "id",
     });
   }
 }
+
+export { Poll };
