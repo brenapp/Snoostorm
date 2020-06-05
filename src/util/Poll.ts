@@ -35,7 +35,7 @@ export default class Poll<T extends object> extends EventEmitter {
 
   constructor({ frequency, get, identifier }: PollConfiguration<T>) {
     super();
-    this.frequency = frequency;
+    this.frequency = frequency || 2000;
 
     this.interval = setInterval(async () => {
       const batch = await get();
