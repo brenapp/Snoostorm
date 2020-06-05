@@ -33,22 +33,24 @@ export class SubmissionStream extends Poll<Snoowrap.Submission> {
   }
 }
 
+export interface InboxStreamOptions {
+  filter:
+    | "inbox"
+    | "unread"
+    | "messages"
+    | "comments"
+    | "selfreply"
+    | "mentions";
+  pollTime: number;
+  limit: number;
+}
+
 export class InboxStream extends Poll<
   Snoowrap.Comment | Snoowrap.PrivateMessage
 > {
   constructor(
     client: Snoowrap,
-    options: {
-      filter:
-        | "inbox"
-        | "unread"
-        | "messages"
-        | "comments"
-        | "selfreply"
-        | "mentions";
-      pollTime: number;
-      limit: number;
-    } = {
+    options: InboxStreamOptions = {
       filter: "inbox",
       pollTime: 2000,
       limit: 5,
