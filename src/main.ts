@@ -64,14 +64,14 @@ export class InboxStream extends Poll<
   }
 }
 
-export class ModMailStream extends Poll<ModmailConversation> {
+export class ModMailStream extends Poll<Snoowrap.PrivateMessage> {
   constructor(
     client: Snoowrap,
     options: SnooStormOptions & { entity?: string } = DefaultOptions
   ) {
     super({
       frequency: options.pollTime || 2000,
-      get: async () => client.getNewModmailConversations(options),
+      get: async () => client.getModmail(options),
       identifier: "id",
     });
   }
