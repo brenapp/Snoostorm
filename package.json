@@ -33,12 +33,12 @@
     "url": "https://github.com/MayorMonty/Snoostorm/issues"
   },
   "dependencies": {
-    "@types/node": "^12.12.7",
-    "@types/request": "^2.48.3",
-    "snoowrap": "^1.20.1",
-    "snyk": "^1.316.1"
+    "snoowrap": "^1.20.1"
   },
   "devDependencies": {
+    "@types/node": "^12.12.7",
+    "@types/request": "^2.48.3",
+    "snyk": "^1.316.1",
     "typescript": "^3.7.2"
   },
   "homepage": "https://github.com/MayorMonty/Snoostorm#readme",
