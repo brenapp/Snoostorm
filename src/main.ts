@@ -9,7 +9,7 @@ export interface SnooStormOptions extends ListingOptions {
 
 export const DefaultOptions: SnooStormOptions = {
   pollTime: 2000,
-  limit: 5,
+  limit: 50,
   subreddit: "all",
 };
 
