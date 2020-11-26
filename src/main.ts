@@ -77,4 +77,19 @@ export class ModMailStream extends Poll<Snoowrap.PrivateMessage> {
   }
 }
 
+
+export class ModQueueStream extends Poll<
+  Snoowrap.Submission | Snoowrap.Comment
+> {
+  constructor(
+    client: Snoowrap,
+    options: SnooStormOptions & { subreddit: string }) {
+    super({
+      frequency: options.pollTime || 2000,
+      get: async () => client.getSubreddit(options.subreddit).getModqueue(options),
+      identifier: "id",
+    });
+  }
+}
+
 export { Poll };

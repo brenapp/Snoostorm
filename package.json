@@ -1,6 +1,6 @@
 {
   "name": "snoostorm",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "A streaming client for reddit, based off of snoowrap",
   "main": "out/main.js",
   "typings": "out/main.d.ts",
@@ -43,7 +43,6 @@
   },
   "homepage": "https://github.com/MayorMonty/Snoostorm#readme",
   "gitHead": "41678a09ffd1feab0953ef6be7bcafca29791959",
-  "_id": "snoostorm@0.0.3",
   "_shasum": "bc7cb3e386b2dac813e2d82df39feed3daac79a2",
   "_from": "snoostorm@>=0.0.3 <0.0.4",
   "_npmVersion": "2.15.1",
