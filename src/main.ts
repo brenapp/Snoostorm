@@ -77,15 +77,16 @@ export class ModMailStream extends Poll<Snoowrap.PrivateMessage> {
   }
 }
 
+
 export class ModQueueStream extends Poll<
   Snoowrap.Submission | Snoowrap.Comment
 > {
   constructor(
     client: Snoowrap,
-    options: SnooStormOptions = DefaultOptions) {
+    options: SnooStormOptions & { subreddit: string }) {
     super({
       frequency: options.pollTime || 2000,
-      get: async () => client.getSubreddit(options.subreddit ?? "all").getModqueue(options),
+      get: async () => client.getSubreddit(options.subreddit).getModqueue(options),
       identifier: "id",
     });
   }
