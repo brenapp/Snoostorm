@@ -38,21 +38,25 @@ export default class Poll<T extends object> extends EventEmitter {
     this.frequency = frequency || 2000;
 
     this.interval = setInterval(async () => {
-      const batch = await get();
+      try {
+        const batch = await get();
 
-      const newItems: T[] = [];
-      for (const item of batch) {
-        const id = item[identifier];
-        if (this.processed.has(id)) continue;
+        const newItems: T[] = [];
+        for (const item of batch) {
+          const id = item[identifier];
+          if (this.processed.has(id)) continue;
 
-        // Emit for new items and add it to the list
-        newItems.push(item);
-        this.processed.add(id);
-        this.emit("item", item);
+          // Emit for new items and add it to the list
+          newItems.push(item);
+          this.processed.add(id);
+          this.emit("item", item);
+        }
+
+        // Emit the new listing of all new items
+        this.emit("listing", newItems);
+      } catch (e) {
+        this.emit("error", e);
       }
-
-      // Emit the new listing of all new items
-      this.emit("listing", newItems);
     }, frequency);
   }
 
