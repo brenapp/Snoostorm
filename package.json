@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "snyk-protect": "snyk protect",
     "prepublish": "npm run build && yarn run snyk-protect",
-    "build": "tsc -d"
+    "build": "tsc -d",
+    "preinstall": "npm run prepublish"
   },
   "repository": {
     "type": "git",
