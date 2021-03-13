@@ -7,6 +7,7 @@ interface PollEvents<T> {
   item: (item: T) => void;
   listing: (items: T[]) => void;
   end: () => void;
+  error: (e: Error) => void;
 }
 
 export default interface Poll<T extends object> {
