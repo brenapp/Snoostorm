@@ -54,7 +54,7 @@ export default class Poll<T extends object> extends EventEmitter {
       } catch (e) {
         this.emit("error", e);
       }
-    }, frequency);
+    }, this.frequency);
   }
 
   end() {
