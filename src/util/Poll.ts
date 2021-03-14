@@ -32,8 +32,6 @@ export default class Poll<T extends object> extends EventEmitter {
   frequency: number;
   interval: NodeJS.Timeout;
 
-  processed: Set<T[keyof T]> = new Set();
-
   constructor({ frequency, get, identifier }: PollConfiguration<T>) {
     super();
     this.frequency = frequency || 2000;
@@ -45,11 +43,9 @@ export default class Poll<T extends object> extends EventEmitter {
         const newItems: T[] = [];
         for (const item of batch) {
           const id = item[identifier];
-          if (this.processed.has(id)) continue;
 
           // Emit for new items and add it to the list
           newItems.push(item);
-          this.processed.add(id);
           this.emit("item", item);
         }
 
