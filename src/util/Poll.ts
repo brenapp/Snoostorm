@@ -25,14 +25,13 @@ export default interface Poll<T extends object> {
 export interface PollConfiguration<T> {
   frequency: number;
   get: () => Awaitable<T[]>;
-  identifier: keyof T;
 }
 
 export default class Poll<T extends object> extends EventEmitter {
   frequency: number;
   interval: NodeJS.Timeout;
 
-  constructor({ frequency, get, identifier }: PollConfiguration<T>) {
+  constructor({ frequency, get }: PollConfiguration<T>) {
     super();
     this.frequency = frequency || 2000;
 
@@ -42,8 +41,6 @@ export default class Poll<T extends object> extends EventEmitter {
 
         const newItems: T[] = [];
         for (const item of batch) {
-          const id = item[identifier];
-
           // Emit for new items and add it to the list
           newItems.push(item);
           this.emit("item", item);
