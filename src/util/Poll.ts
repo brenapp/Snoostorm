@@ -35,6 +35,7 @@ export default class Poll<T extends object> extends EventEmitter {
   constructor({ frequency, get }: PollConfiguration<T>) {
     super();
     this.frequency = frequency || 2000;
+    this.getter = get;
   }
 
   start() {
