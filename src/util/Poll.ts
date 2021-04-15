@@ -29,15 +29,18 @@ export interface PollConfiguration<T> {
 
 export default class Poll<T extends object> extends EventEmitter {
   frequency: number;
-  interval: NodeJS.Timeout;
+  interval?: NodeJS.Timeout;
+  getter: () => any = () => ([]);
 
   constructor({ frequency, get }: PollConfiguration<T>) {
     super();
     this.frequency = frequency || 2000;
+  }
 
+  start() {
     this.interval = setInterval(async () => {
       try {
-        const batch = await get();
+        const batch = await this.get();
 
         const newItems: T[] = [];
         for (const item of batch) {
@@ -55,7 +58,9 @@ export default class Poll<T extends object> extends EventEmitter {
   }
 
   end() {
-    clearInterval(this.interval);
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
     this.emit("end");
   }
 }
