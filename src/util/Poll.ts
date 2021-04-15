@@ -40,7 +40,7 @@ export default class Poll<T extends object> extends EventEmitter {
   start() {
     this.interval = setInterval(async () => {
       try {
-        const batch = await this.get();
+        const batch = await this.getter();
 
         const newItems: T[] = [];
         for (const item of batch) {
