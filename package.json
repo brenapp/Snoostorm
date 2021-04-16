@@ -6,8 +6,7 @@
   "typings": "out/main.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run build && yarn run snyk-protect",
+    "postinstall": "npm run build",
     "build": "tsc -d"
   },
   "repository": {

@@ -17,8 +17,7 @@ export class CommentStream extends Poll<Snoowrap.Comment> {
   constructor(client: Snoowrap, options: SnooStormOptions = DefaultOptions) {
     super({
       frequency: options.pollTime || 2000,
-      get: async () => client.getNewComments(options.subreddit, options),
-      identifier: "id",
+      get: async () => client.getNewComments(options.subreddit, options)
     });
   }
 }
@@ -27,8 +26,7 @@ export class SubmissionStream extends Poll<Snoowrap.Submission> {
   constructor(client: Snoowrap, options: SnooStormOptions = DefaultOptions) {
     super({
       frequency: options.pollTime || 2000,
-      get: async () => client.getNew(options.subreddit, options),
-      identifier: "id",
+      get: async () => client.getNew(options.subreddit, options)
     });
   }
 }
@@ -58,8 +56,7 @@ export class InboxStream extends Poll<
   ) {
     super({
       frequency: options.pollTime,
-      get: async () => client.getInbox(options),
-      identifier: "id",
+      get: async () => client.getInbox(options)
     });
   }
 }
@@ -71,8 +68,7 @@ export class ModMailStream extends Poll<Snoowrap.PrivateMessage> {
   ) {
     super({
       frequency: options.pollTime || 2000,
-      get: async () => client.getModmail(options),
-      identifier: "id",
+      get: async () => client.getModmail(options)
     });
   }
 }
@@ -86,8 +82,7 @@ export class ModQueueStream extends Poll<
     options: SnooStormOptions & { subreddit: string }) {
     super({
       frequency: options.pollTime || 2000,
-      get: async () => client.getSubreddit(options.subreddit).getModqueue(options),
-      identifier: "id",
+      get: async () => client.getSubreddit(options.subreddit).getModqueue(options)
     });
   }
 }
