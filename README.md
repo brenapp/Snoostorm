@@ -1,6 +1,6 @@
-# SnooStorm
+<img width="300" alt="Snoostorm" src="https://user-images.githubusercontent.com/8839926/162346532-bb40a5ae-7cc8-4f4b-adbf-a850ff130ab1.png">
 
-Event-based wrapper around [`snoowrap`](https://npm.im/snoowrap)
+Snoostorm is an event-based wrapped around [`snoowrap`](https://npm.im/snoowrap). It handles polling for you so you can design Reddit bots and applications to more easily react to new comments, messages, and other events on the site.
 
 ## Usage
 
