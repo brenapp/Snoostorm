@@ -2,9 +2,20 @@
 
 Snoostorm is an event-based wrapped around [`snoowrap`](https://npm.im/snoowrap). It handles polling for you so you can design Reddit bots and applications to more easily react to new comments, messages, and other events on the site.
 
+## Install
+You can install snoostorm from NPM. As snoostorm is implemented in TypeScript, types come preinstalled with the package.
+
+```
+npm install snoostorm
+```
+```
+yarn add snoostorm
+```
+
+
 ## Usage
 
-Basic Usage:
+Let's get started with a simple example. 
 
 ```javascript
 import { InboxStream, CommentStream, SubmissionStream } from "snoostorm";
